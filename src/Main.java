@@ -76,29 +76,29 @@ public class Main {
                         break;
 
                     } catch (NumberFormatException e) {
+                        int num = list.indexOf(inputDel);
 
-                        for (int i = 0; i < list.size(); i++) {
-                            if (list.get(i).equals(inputDel)) {
-                                System.out.println("Покупка " + "'" + list.get(i) + "'" + " удалена, список покупок:");
-                                list.remove(list.get(i));
-                                for (int j = 0; j < list.size(); j++) {
-                                    System.out.println((j + 1) + ". " + list.get(j));
-                                }
-                            }
+                        System.out.println("Покупка " + "'" + list.remove(num) + "'" + " удалена, список покупок:");
+
+                        for (int j = 0; j < list.size(); j++) {
+                            System.out.println((j + 1) + ". " + list.get(j));
                         }
+
                         break;
                     }
 
                 case 4:
                     System.out.println("Введите текст для поиска:");
                     String foundProduct = scanner.nextLine();
+
                     String foundProductLower = foundProduct.toLowerCase();
                     System.out.println("Найдено:");
-                    for (String product : list) {
-                        String productLower = product.toLowerCase();
+                    for (int i = 0; i < list.size(); i++) {
+                        String productLower = list.get(i).toLowerCase();
                         if (productLower.contains(foundProductLower)) {
-                            System.out.println((list.indexOf(product) + 1) + ". " + product);
+                            System.out.println((i + 1) + ". " + list.get(i));
                         }
+
                     }
 
                     break;
